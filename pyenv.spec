@@ -1,12 +1,11 @@
 Name: pyenv
-Version: 1.2.18
+Version: 2.3.14
 Release: 1%{?dist}
 BuildArch: noarch
 Summary: A simple Python version manager
 License: MIT
 URL: https://github.com/pyenv/%{name}
 Requires: bash
-Recommends: pyenv-python-build, pyenv-virtualenv
 
 Source0: https://github.com/pyenv/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0: 0001-Include-usr-share-pyenv-in-plugin-search-path.patch
@@ -77,9 +76,6 @@ Requires: bzip2-devel
 Requires: openssl-devel
 Requires: sqlite-devel
 Requires: make
-# Additional requirements for building jython
-Suggests: java-11-openjdk-devel
-Suggests: ant
 
 %description python-build
 The python-build plugin for pyenv provides a `pyenv install` command

@@ -1,25 +1,13 @@
-From 9caa2bbb38ec6f7a07eca2110fd647db75f4c321 Mon Sep 17 00:00:00 2001
-From: Nicklas Lindgren <nili@gulmohar.se>
-Date: Sun, 28 Dec 2014 16:28:31 +0100
-Subject: [PATCH] Include /usr/share/pyenv in plugin search path
-
----
- libexec/pyenv | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/libexec/pyenv b/libexec/pyenv
-index 9dd464a..d62daa9 100755
+diff --git a/BUILD/pyenv-2.3.14/libexec/pyenv b/home/mdegenaro/pyenv
+index 35161cf..75e3efb 100755
 --- a/libexec/pyenv
 +++ b/libexec/pyenv
-@@ -70,7 +70,7 @@ export PYENV_DIR
+@@ -77,7 +77,7 @@ export PYENV_DIR
  shopt -s nullglob
- 
+
  bin_path="$(abs_dirname "$0")"
--for plugin_bin in "${PYENV_ROOT}/plugins/"*/bin; do
-+for plugin_bin in "${PYENV_ROOT}/plugins/"*/bin /usr/share/pyenv/plugins/*/bin; do
+-for plugin_bin in "${bin_path%/*}"/plugins/*/bin; do
++for plugin_bin in "${bin_path%/*}"/plugins/*/bin /usr/share/pyenv/plugins/*/bin; do
    PATH="${plugin_bin}:${PATH}"
  done
- export PATH="${bin_path}:${PATH}"
--- 
-1.9.3
-
+ # PYENV_ROOT can be set to anything, so it may happen to be equal to the base path above,
